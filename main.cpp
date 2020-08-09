@@ -13,8 +13,8 @@ int main()
     Player P1;
 
     //Window
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Work in progress game!");
-    //Framerate 
+    sf::RenderWindow window(sf::VideoMode(320, 180), "Work in progress game!");
+    //Framerate
     window.setFramerateLimit(60);
 
     while (window.isOpen())
