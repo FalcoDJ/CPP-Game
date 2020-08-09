@@ -27,6 +27,8 @@ class Player
 
     Sprite getSprite();
 
+    FloatRect getPosition();
+
     void moveLeft();
     void moveRight();
     void Jump();
@@ -36,7 +38,7 @@ class Player
 
     void update(float elapsedTime);
 
-    void healthUpgrade();
+    void healthUpgrade(int healthInt);
     void healthRestoration();
 
 };
