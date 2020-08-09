@@ -13,17 +13,27 @@ int main()
     Player P1;
 
     //Window
-    sf::RenderWindow window(sf::VideoMode(320, 180), "Work in progress game!");
+    RenderWindow window(sf::VideoMode(320, 180), "Work in progress game!");
     //Framerate
     window.setFramerateLimit(60);
 
     while (window.isOpen())
     {
-        sf::Event event;
+        Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            //Controlls/Buttons
+            if (event.type == Event::KeyPressed)
+            {
+              //Escape
+              if (event.key.code == Keyboard::Escape)
+              {
+                window.close();
+              }
+            }
         }
 
         window.clear();
