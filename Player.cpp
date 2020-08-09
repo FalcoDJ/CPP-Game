@@ -14,25 +14,25 @@ Player::Player()
 //move left
 void Player::moveLeft()
 {
-  leftKey = true;
+  m_leftKey = true;
 }
 
 //move right
 void Player::moveRight()
 {
-  rightKey = true;
+  m_rightKey = true;
 }
 
 //Jump
 void Player::Jump()
 {
-  jumpKey = true;
+  m_jumpKey = true;
 }
 
 //Crouch
 void Player::Crouch()
 {
-  downKey = true;
+  m_downKey = true;
 }
 
 //Stop Motion Variables
@@ -40,19 +40,19 @@ void Player::Crouch()
 //stop left
 void Player::stopLeft()
 {
-  leftKey = false;
+  m_leftKey = false;
 }
 
 //stop right
 void Player::stopRight()
 {
-  rightKey = false;
+  m_rightKey = false;
 }
 
 //stand / stop crouching
 void Player::Stand()
 {
-  downKey = true;
+  m_downKey = true;
 }
 
 //Other Variables
@@ -64,4 +64,9 @@ Sprite Player::getSprite()
 FloatRect Player::getPosition()
 {
   return m_Sprite.getGlobalBounds();
+}
+
+void update(float elapsedTime)
+{
+
 }

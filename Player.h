@@ -22,10 +22,10 @@ class Player
     float m_Health;
 
     //Status Variables
-    bool leftKey;
-    bool rightKey;
-    bool jumpKey;
-    bool downKey;
+    bool m_leftKey;
+    bool m_rightKey;
+    bool m_jumpKey;
+    bool m_downKey;
 
   public:
     Player();
