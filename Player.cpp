@@ -10,6 +10,26 @@ Player::Player()
   m_Sprite.setTexture(TextureHolder::GetTexture("img/Player/sprite.png"));
 }
 
+void Player::moveLeft()
+{
+  leftKey = true;
+}
+
+void Player::moveRight()
+{
+  rightKey = true;
+}
+
+void Player::Jump()
+{
+  jumpKey = true;
+}
+
+void Player::Crouch()
+{
+  downKey = true;
+}
+
 Sprite Player::getSprite()
 {
   return m_Sprite;

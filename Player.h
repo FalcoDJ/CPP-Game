@@ -20,6 +20,13 @@ class Player
     int m_JumpHeight;
 
     float m_Health;
+
+    //Status Variables
+    bool leftKey;
+    bool rightKey;
+    bool jumpKey;
+    bool downKey;
+
   public:
     Player();
 
@@ -32,6 +39,7 @@ class Player
     void moveLeft();
     void moveRight();
     void Jump();
+    void Crouch();
 
     void stopLeft();
     void stopRight();
