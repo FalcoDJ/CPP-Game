@@ -43,6 +43,7 @@ class Player
 
     void stopLeft();
     void stopRight();
+    void Stand();
 
     void update(float elapsedTime);
 
