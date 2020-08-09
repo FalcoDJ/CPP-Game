@@ -1,11 +1,21 @@
 #include <SFML/Graphics.hpp>
+#include "TextureHolder.h"
+#include "Player.h"
+
+using namespace sf;
 
 int main()
 {
+    //Texture holder instance is required for using texture holders
+    TextureHolder holder;
+
+    //Player instance
+    Player P1;
+
+    //Window
     sf::RenderWindow window(sf::VideoMode(200, 200), "Work in progress game!");
+    //Framerate 
     window.setFramerateLimit(60);
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
 
     while (window.isOpen())
     {
@@ -17,7 +27,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(P1.getSprite());
         window.display();
     }
 
