@@ -7,7 +7,7 @@ class Player
 {
   private:
     //Player Variables
-    int m_PlayerHeight = 64;
+    int m_PlayerHeight;
     int m_PlayerWidth;
 
     Vector2f m_Position;
