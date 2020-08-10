@@ -61,15 +61,15 @@ Sprite Player::getSprite()
   return m_Sprite;
 }
 
-FloatRect Player::getPosition()
+Vector2f Player::getPosition()
 {
-  return m_Sprite.getGlobalBounds();
+  return m_Position;
 }
 
 void Player::update(float elapsedTime, Vector2f camera)
 {
 
-  m_Sprite.setPosition(Vector2f(m_Position.x - camera.x, m_Position.y - camera.y));
+  m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
 
   if (m_rightKey)
   {

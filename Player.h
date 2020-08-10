@@ -16,7 +16,7 @@ class Player
 
     Texture m_Texture;
 
-    float m_Speed;
+    float m_Speed = 31;
     int m_JumpHeight;
 
     float m_Health;
@@ -35,7 +35,7 @@ class Player
 
     Sprite getSprite();
 
-    FloatRect getPosition();
+    Vector2f getPosition();
 
     void moveLeft();
     void moveRight();

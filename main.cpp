@@ -50,6 +50,12 @@ int main()
 				//Make a decimal fraction of 1 from the delta time
 				float dtAsSeconds = dt.asSeconds();
 
+        Vector2f camera;
+        camera.x = P1.getPosition().x - 50;
+        camera.y = P1.getPosition().y - 100;
+
+        P1.update(dtAsSeconds, camera);
+
         //###########
         // Drawing
         //###########
