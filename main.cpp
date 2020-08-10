@@ -9,6 +9,8 @@ int main()
     //Texture holder instance is required for using texture holders
     TextureHolder holder;
 
+    Clock clock;
+
     //Player instance
     Player P1;
 
@@ -17,8 +19,12 @@ int main()
     //Framerate
     window.setFramerateLimit(60);
 
+    float totalGameTime;
+
     while (window.isOpen())
     {
+
+        P1.moveRight();
         Event event;
         while (window.pollEvent(event))
         {
@@ -35,6 +41,18 @@ int main()
               }
             }
         }
+
+        //###########
+        // Updating
+        //###########
+        //Update the time delta
+				Time dt = clock.restart();
+				//Make a decimal fraction of 1 from the delta time
+				float dtAsSeconds = dt.asSeconds();
+
+        //###########
+        // Drawing
+        //###########
 
         window.clear();
         window.draw(P1.getSprite());
