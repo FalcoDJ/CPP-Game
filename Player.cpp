@@ -8,7 +8,7 @@ Player::Player()
   m_Health = 100;
 
   //Texture and Sprite
-  m_Sprite.setTexture(TextureHolder::GetTexture("img/Player/sprite.png"));
+  m_Sprite.setTexture(TextureHolder::GetTexture("img/Player/Sheet Test.png"));
 }
 
 //Moving Functions
@@ -91,7 +91,7 @@ void Player::update(float elapsedTime, Vector2f camera)
     m_canJump = false;
     m_jumpKey = false;
   }
-  
+
 
   //Left
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
