@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Player.h"
 #include "TextureHolder.h"
+#include "SpriteAnimator.h"
 
 Player::Player()
 {
@@ -75,7 +76,9 @@ bool Player::canIJump()
 void Player::update(float elapsedTime, Vector2f camera)
 {
 
-  m_Sprite.setTextureRect(sf::IntRect(0, 0, m_SpriteWidth, m_SpriteHeight));
+  //m_Sprite.setTextureRect(sf::IntRect(0, 0, m_SpriteWidth, m_SpriteHeight));
+
+  SpriteAnimator(m_Sprite, m_SpriteWidth, m_SpriteHeight, 10, 1, m_activeFrame);
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
   //Moving
 
