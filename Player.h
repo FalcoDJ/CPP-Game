@@ -27,6 +27,7 @@ class Player
     bool m_jumpKey;
     bool m_downKey;
 
+
   public:
     Player();
 
@@ -45,7 +46,7 @@ class Player
     void stopRight();
     void Stand();
 
-    void update(float elapsedTime);
+    void update(float elapsedTime, Vector2f camera);
 
     void healthUpgrade(int healthInt);
     void healthRestoration();

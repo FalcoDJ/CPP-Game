@@ -66,7 +66,13 @@ FloatRect Player::getPosition()
   return m_Sprite.getGlobalBounds();
 }
 
-void update(float elapsedTime)
+void Player::update(float elapsedTime, Vector2f camera)
 {
 
+  m_Sprite.setPosition(Vector2f(m_Position.x - camera.x, m_Position.y - camera.y));
+
+  if (m_rightKey)
+  {
+    m_Position.x += m_Speed * elapsedTime;
+  }
 }
