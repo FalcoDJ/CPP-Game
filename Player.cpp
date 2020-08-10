@@ -75,6 +75,8 @@ bool Player::canIJump()
 void Player::update(float elapsedTime, Vector2f camera)
 {
 
+  m_Sprite.setTextureRect(sf::IntRect(0, 0, m_SpriteWidth, m_SpriteHeight));
+  m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
   //Moving
 
   //Jumping
@@ -92,9 +94,7 @@ void Player::update(float elapsedTime, Vector2f camera)
     m_jumpKey = false;
   }
 
-
   //Left
-  m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
 
   if (m_leftKey)
   {

@@ -10,6 +10,8 @@ class Player
     int m_PlayerHeight;
     int m_PlayerWidth;
 
+    int m_SpriteWidth = 24;
+    int m_SpriteHeight = 24;
     Vector2f m_Position;
 
     Sprite m_Sprite;
