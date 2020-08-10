@@ -52,7 +52,7 @@ void Player::stopRight()
 //stand / stop crouching
 void Player::Stand()
 {
-  m_downKey = true;
+  m_downKey = false;
 }
 
 //Other Variables
@@ -70,6 +70,11 @@ void Player::update(float elapsedTime, Vector2f camera)
 {
 
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
+
+  if (m_leftKey)
+  {
+    m_Position.x -= m_Speed * elapsedTime;
+  }
 
   if (m_rightKey)
   {

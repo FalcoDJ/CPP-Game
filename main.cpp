@@ -24,23 +24,39 @@ int main()
     while (window.isOpen())
     {
 
-        P1.moveRight();
         Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-
-            //Controlls/Buttons
-            if (event.type == Event::KeyPressed)
-            {
-              //Escape
-              if (event.key.code == Keyboard::Escape)
-              {
-                window.close();
-              }
-            }
         }
+
+        //##########
+        // Input
+        //##########
+          //Escape
+          if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+          {
+            window.close();
+          }
+
+          //Arrow Keys
+          if (Keyboard::isKeyPressed(sf::Keyboard::Left))
+          {
+            P1.moveLeft();
+          }
+          else
+          {
+            P1.stopLeft();
+          }
+          if (Keyboard::isKeyPressed(sf::Keyboard::Right))
+          {
+            P1.moveRight();
+          }
+          else
+          {
+            P1.stopRight();
+          }
 
         //###########
         // Updating
@@ -51,8 +67,8 @@ int main()
 				float dtAsSeconds = dt.asSeconds();
 
         Vector2f camera;
-        camera.x = P1.getPosition().x - 50;
-        camera.y = P1.getPosition().y - 100;
+        camera.x = 0;
+        camera.y = 0;
 
         P1.update(dtAsSeconds, camera);
 
