@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Player.h"
 #include "TextureHolder.h"
 
@@ -66,9 +67,33 @@ Vector2f Player::getPosition()
   return m_Position;
 }
 
+bool Player::canIJump()
+{
+  return m_canJump;
+}
+
 void Player::update(float elapsedTime, Vector2f camera)
 {
 
+  //Moving
+
+  //Jumping
+  m_Position.y += m_YSpeed;
+  m_YSpeed += m_playerYacceleration;
+  if (m_Position.y >= 140)
+  {
+    m_YSpeed  = 0;
+    m_canJump = true;
+  }
+  if (m_jumpKey)
+  {
+    m_YSpeed = -(m_JumpSpeed * elapsedTime);
+    m_canJump = false;
+    m_jumpKey = false;
+  }
+  
+
+  //Left
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
 
   if (m_leftKey)
@@ -76,6 +101,7 @@ void Player::update(float elapsedTime, Vector2f camera)
     m_Position.x -= m_Speed * elapsedTime;
   }
 
+  //Right
   if (m_rightKey)
   {
     m_Position.x += m_Speed * elapsedTime;

@@ -16,14 +16,17 @@ class Player
 
     Texture m_Texture;
 
-    float m_Speed = 31;
-    int m_JumpSpeed = -109;
+    //Speed
+    float m_Speed = 60;
+    int m_YSpeed = 0;
+    int m_JumpSpeed = 500;
 
-    int playerYacceleration = -1;
+    int m_playerYacceleration = 1;
 
     float m_Health;
 
     //Status Variables
+    bool m_canJump;
     bool m_leftKey;
     bool m_rightKey;
     bool m_jumpKey;
@@ -46,8 +49,10 @@ class Player
 
     void stopLeft();
     void stopRight();
+    void Fall();
     void Stand();
 
+    bool canIJump();
     void update(float elapsedTime, Vector2f camera);
 
     void healthUpgrade(int healthInt);

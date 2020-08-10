@@ -14,6 +14,8 @@ int main()
     //Player instance
     Player P1;
 
+    int tempGround = 140;
+
     //Window
     RenderWindow window(sf::VideoMode(320, 180), "Work in progress game!");
     //Framerate
@@ -40,11 +42,12 @@ int main()
             window.close();
           }
 
-          if (Keyboard::isKeyPressed(sf::Keyboard::Space))
+          //Jump
+          if (Keyboard::isKeyPressed(sf::Keyboard::Space) && P1.canIJump())
           {
-            //Jump
             P1.Jump();
           }
+
           if (Keyboard::isKeyPressed(sf::Keyboard::Left))
           {
             //Move Left
