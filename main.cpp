@@ -40,21 +40,29 @@ int main()
             window.close();
           }
 
-          //Arrow Keys
+          if (Keyboard::isKeyPressed(sf::Keyboard::Space))
+          {
+            //Jump
+            P1.Jump();
+          }
           if (Keyboard::isKeyPressed(sf::Keyboard::Left))
           {
+            //Move Left
             P1.moveLeft();
           }
           else
           {
+            //Stop Left
             P1.stopLeft();
           }
           if (Keyboard::isKeyPressed(sf::Keyboard::Right))
           {
+            //Move Right
             P1.moveRight();
           }
           else
           {
+            //Stop Right
             P1.stopRight();
           }
 

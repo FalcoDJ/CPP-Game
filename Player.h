@@ -17,7 +17,9 @@ class Player
     Texture m_Texture;
 
     float m_Speed = 31;
-    int m_JumpHeight;
+    int m_JumpSpeed = -109;
+
+    int playerYacceleration = -1;
 
     float m_Health;
 

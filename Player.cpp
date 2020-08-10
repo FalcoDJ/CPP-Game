@@ -80,4 +80,9 @@ void Player::update(float elapsedTime, Vector2f camera)
   {
     m_Position.x += m_Speed * elapsedTime;
   }
+
+  if (m_jumpKey)
+  {
+    m_Position.y += m_JumpSpeed * elapsedTime;
+  }
 }
