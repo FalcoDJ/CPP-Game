@@ -91,8 +91,11 @@ int main()
         //###########
 
         window.clear();
+
+        //Character
         P1.draw(gameFrameCounter);
         window.draw(P1.getSprite());
+        
         window.display();
     }
 

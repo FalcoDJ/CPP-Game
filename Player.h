@@ -23,7 +23,7 @@ class Player
     //Speed
     float m_Speed = 100;
     int m_YSpeed = 0;
-    int m_JumpSpeed = 500;
+    int m_JumpSpeed = 700;
     int m_playerYacceleration = 1;
 
     //Status Variables

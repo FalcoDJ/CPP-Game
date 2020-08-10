@@ -11,5 +11,4 @@ using namespace sf;
 
     SpriteAnimator(Sprite& sprite, int spriteWidth, int spriteHeight, int framesPerRow, int framesPerColumn, int currentFrame);
 
-    //TODO: -Continue here later
  };
