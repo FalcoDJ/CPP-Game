@@ -75,10 +75,6 @@ bool Player::canIJump()
 
 void Player::update(float elapsedTime, Vector2f camera)
 {
-
-  //m_Sprite.setTextureRect(sf::IntRect(0, 0, m_SpriteWidth, m_SpriteHeight));
-
-  SpriteAnimator(m_Sprite, m_SpriteWidth, m_SpriteHeight, 10, 1, m_activeFrame);
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
   //Moving
 
@@ -113,5 +109,20 @@ void Player::update(float elapsedTime, Vector2f camera)
   if (m_jumpKey)
   {
     m_Position.y += m_JumpSpeed * elapsedTime;
+  }
+}
+
+void Player::draw(int gameFrameCounter)
+{
+  //Animation
+  SpriteAnimator(m_Sprite, m_SpriteWidth, m_SpriteHeight, 10, 1, m_activeFrame);
+  //Temp Frame changer
+  if (gameFrameCounter % 5 == 0)
+  {
+    m_activeFrame += 1;
+  }
+  if (m_activeFrame >= 10)
+  {
+    m_activeFrame -= 10;
   }
 }

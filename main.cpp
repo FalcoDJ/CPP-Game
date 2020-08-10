@@ -16,6 +16,7 @@ int main()
 
     int tempGround = 140;
 
+    int gameFrameCounter;
     //Window
     RenderWindow window(sf::VideoMode(320, 180), "Work in progress game!");
     //Framerate
@@ -77,6 +78,8 @@ int main()
 				//Make a decimal fraction of 1 from the delta time
 				float dtAsSeconds = dt.asSeconds();
 
+        gameFrameCounter++;
+
         Vector2f camera;
         camera.x = 0;
         camera.y = 0;
@@ -88,6 +91,7 @@ int main()
         //###########
 
         window.clear();
+        P1.draw(gameFrameCounter);
         window.draw(P1.getSprite());
         window.display();
     }

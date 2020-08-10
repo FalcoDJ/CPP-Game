@@ -55,6 +55,8 @@ class Player
 
     void update(float elapsedTime, Vector2f camera);
 
+    void draw(int gameFrameCounter);
+
     //Status functions
     void resetPlayer();
     bool canIJump();
