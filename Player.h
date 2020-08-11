@@ -14,7 +14,6 @@ class Player
 
     //Sprite Variables
     Sprite m_Sprite;
-    Texture m_Texture;
     int m_SpriteWidth = 24;
     int m_SpriteHeight = 24;
 
