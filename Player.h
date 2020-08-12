@@ -7,8 +7,8 @@ class Player
 {
   private:
     //Player Variables
-    int m_PlayerHeight;
-    int m_PlayerWidth;
+    int m_PlayerHeight = 24;
+    int m_PlayerWidth = 24;
     Vector2f m_Position;
     float m_Health;
 

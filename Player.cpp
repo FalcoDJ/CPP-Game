@@ -80,7 +80,7 @@ void Player::update(float elapsedTime)
   //Jumping
   m_Position.y += m_YSpeed;
   m_YSpeed += m_playerYacceleration;
-  if (m_Position.y >= 144 - m_SpriteHeight)
+  if (m_Position.y >= 145 - m_SpriteHeight)
   {
     m_YSpeed  = 0;
     m_canJump = true;
@@ -115,6 +115,7 @@ void Player::draw(int gameFrameCounter, Vector2f camera)
 {
   //Sprite position in relation to camera
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
+
   //Animation
   SpriteAnimator(m_Sprite, m_SpriteWidth, m_SpriteHeight, 10, 1, m_activeFrame);
   //Temp Frame changer

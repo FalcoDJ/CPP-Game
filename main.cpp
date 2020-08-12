@@ -19,7 +19,10 @@ int main()
 
     int gameFrameCounter;
     //Window
-    RenderWindow window(sf::VideoMode(320, 180), "Work in progress game!");
+
+    int windowHeight = 176;
+    int windowWidth = 320;
+    RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Work in progress game!");
     //Framerate
     window.setFramerateLimit(60);
 
@@ -115,6 +118,13 @@ int main()
         gameFrameCounter++;
 
         Vector2f camera;
+        if(P1.getPosition().x <= 0)
+        {
+          camera.x = 0;
+        }
+        else if (P1.getPosition().x <= levelWidthTiles * 16) {
+          /* code */
+        }
         camera.x = P1.getPosition().x - 60;
         camera.y = P1.getPosition().y - 100;
 
