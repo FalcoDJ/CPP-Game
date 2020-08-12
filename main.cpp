@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "TextureHolder.h"
 #include "Player.h"
+#include "Tile.h"
 
 using namespace sf;
 
@@ -23,6 +24,13 @@ int main()
     window.setFramerateLimit(60);
 
     float totalGameTime;
+
+    //Temporary tile Space
+    Vector2f tempPos;
+    tempPos.x = 1;
+    tempPos.y = 0;
+    Tile tile(0, tempPos);
+
 
     while (window.isOpen())
     {
@@ -84,7 +92,7 @@ int main()
         camera.x = 0;
         camera.y = 0;
 
-        P1.update(dtAsSeconds, camera);
+        P1.update(dtAsSeconds);
 
         //###########
         // Drawing
@@ -92,8 +100,12 @@ int main()
 
         window.clear();
 
+        //Tiles
+        tile.draw(camera);
+        window.draw(tile.getSprite());
+
         //Character
-        P1.draw(gameFrameCounter);
+        P1.draw(gameFrameCounter, camera);
         window.draw(P1.getSprite());
 
         window.display();
