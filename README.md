@@ -25,8 +25,8 @@ Mac Dependencies:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew install sfml
 brew install cmake
+brew install sfml
 ```
 
 On Mac, open the terminal and type:
