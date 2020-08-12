@@ -76,7 +76,6 @@ bool Player::canIJump()
 void Player::update(float elapsedTime)
 {
   //Moving
-
   //Jumping
   m_Position.y += m_YSpeed;
   m_YSpeed += m_playerYacceleration;
