@@ -52,9 +52,9 @@ class Player
     void Stand();
 
 
-    void update(float elapsedTime, Vector2f camera);
+    void update(float elapsedTime);
 
-    void draw(int gameFrameCounter);
+    void draw(int gameFrameCounter, Vector2f camera);
 
     //Status functions
     void resetPlayer();

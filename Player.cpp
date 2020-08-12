@@ -73,9 +73,8 @@ bool Player::canIJump()
   return m_canJump;
 }
 
-void Player::update(float elapsedTime, Vector2f camera)
+void Player::update(float elapsedTime)
 {
-  m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
   //Moving
 
   //Jumping
@@ -112,8 +111,10 @@ void Player::update(float elapsedTime, Vector2f camera)
   }
 }
 
-void Player::draw(int gameFrameCounter)
+void Player::draw(int gameFrameCounter, Vector2f camera)
 {
+  //Sprite position in relation to camera
+  m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
   //Animation
   SpriteAnimator(m_Sprite, m_SpriteWidth, m_SpriteHeight, 10, 1, m_activeFrame);
   //Temp Frame changer
