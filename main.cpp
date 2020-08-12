@@ -118,13 +118,7 @@ int main()
         gameFrameCounter++;
 
         Vector2f camera;
-        if(P1.getPosition().x <= 0)
-        {
-          camera.x = 0;
-        }
-        else if (P1.getPosition().x <= levelWidthTiles * 16) {
-          /* code */
-        }
+
         camera.x = P1.getPosition().x - 60;
         camera.y = P1.getPosition().y - 100;
 
@@ -137,6 +131,7 @@ int main()
             tilePosition.x = j;
             tilePosition.y = i;
             tiles[i][j].update(tiles[i][j].getType(), tilePosition);
+
           }
         }
 

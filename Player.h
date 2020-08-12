@@ -51,7 +51,8 @@ class Player
     void stopRight();
     void Fall();
     void Stand();
-
+    int returnWidth();
+    int returnHeight();
 
     void update(float elapsedTime);
 

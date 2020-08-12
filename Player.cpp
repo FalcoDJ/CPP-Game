@@ -73,13 +73,23 @@ bool Player::canIJump()
   return m_canJump;
 }
 
+int Player::returnWidth()
+{
+  return m_PlayerWidth;
+}
+
+int Player::returnHeight()
+{
+  return m_PlayerHeight;
+}
+
 void Player::update(float elapsedTime)
 {
   //Moving
   //Jumping
   m_Position.y += m_YSpeed;
   m_YSpeed += m_playerYacceleration;
-  if (m_Position.y >= 145 - m_SpriteHeight)
+  if (m_Position.y >= 144 - m_SpriteHeight)
   {
     m_YSpeed  = 0;
     m_canJump = true;
