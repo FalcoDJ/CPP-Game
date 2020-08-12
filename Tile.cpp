@@ -16,10 +16,16 @@ void Tile::update(int type, Vector2f tilePosition)
   m_tileType = type;
 }
 
+
 void Tile::draw(Vector2f camera)
 {
   m_Sprite.setPosition(m_Position.x - camera.x, m_Position.y - camera.y);
   SpriteAnimator(m_Sprite, m_tileSize, m_tileSize, 4, 1, m_tileType);
+}
+
+int Tile::getType()
+{
+  return m_tileType;
 }
 
 Sprite Tile::getSprite()

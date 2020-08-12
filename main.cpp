@@ -26,13 +26,18 @@ int main()
     float totalGameTime;
 
     //Tile Space
-    int numTiles = 20;
+    int levelWidthTiles = 20;
+    int levelHeightTiles = 11;
+    int numTiles = levelWidthTiles * levelHeightTiles;
     Tile* tiles = nullptr;
     delete[] tiles;
 
     while (window.isOpen())
     {
-        Tile* tiles = new Tile[numTiles];
+        Tile** tiles = new Tile*[levelHeightTiles];
+        for(int i = 0; i < levelHeightTiles; i++)
+          tiles[i] = new Tile[levelWidthTiles];
+
         Event event;
         while (window.pollEvent(event))
         {
@@ -91,13 +96,15 @@ int main()
         camera.y = 0;
 
         //Update Tiles
-        for (int i = 0; i < numTiles; i++)
+        for (int i = 0; i < levelHeightTiles; i++)
         {
-
-          Vector2f tilePosition;
-          tilePosition.x = i;
-          tilePosition.y = 9;
-          tiles[i].update(2, tilePosition);
+          for (int j = 0; j < levelWidthTiles; j++)
+          {
+            Vector2f tilePosition;
+            tilePosition.x = j;
+            tilePosition.y = i;
+            tiles[i][j].update(tiles[i][j].getType(), tilePosition);
+          }
         }
 
         //Update Player
@@ -110,10 +117,13 @@ int main()
         window.clear();
 
         //Draw Tiles
-        for (int i = 0; i < numTiles; i++)
+        for (int i = 0; i < levelHeightTiles; i++)
         {
-          tiles[i].draw(camera);
-          window.draw(tiles[i].getSprite());
+          for (int j = 0; j < levelWidthTiles; j++)
+          {
+            tiles[i][j].draw(camera);
+            window.draw(tiles[i][j].getSprite());
+          }
         }
 
         //Character
