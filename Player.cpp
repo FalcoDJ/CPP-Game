@@ -80,7 +80,7 @@ void Player::update(float elapsedTime)
   //Jumping
   m_Position.y += m_YSpeed;
   m_YSpeed += m_playerYacceleration;
-  if (m_Position.y >= 140)
+  if (m_Position.y >= 144 - m_SpriteHeight)
   {
     m_YSpeed  = 0;
     m_canJump = true;

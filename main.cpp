@@ -15,7 +15,7 @@ int main()
     //Player instance
     Player P1;
 
-    int tempGround = 140;
+    int tempGround = 144;
 
     int gameFrameCounter;
     //Window
@@ -25,11 +25,8 @@ int main()
 
     float totalGameTime;
 
-    //Temporary tile Space
-
+    //Tile Space
     int numTiles = 20;
-
-
     Tile* tiles = nullptr;
     delete[] tiles;
 
@@ -93,16 +90,17 @@ int main()
         camera.x = 0;
         camera.y = 0;
 
-
+        //Update Tiles
         for (int i = 0; i < numTiles; i++)
         {
 
-          Vector2f tempPos;
-          tempPos.x = i;
-          tempPos.y = 0;
-          tiles[i].update(2, tempPos);
+          Vector2f tilePosition;
+          tilePosition.x = i;
+          tilePosition.y = 9;
+          tiles[i].update(2, tilePosition);
         }
 
+        //Update Player
         P1.update(dtAsSeconds);
 
         //###########
@@ -111,9 +109,7 @@ int main()
 
         window.clear();
 
-        //Tiles
-        //tile.draw(camera);
-        //window.draw(tile.getSprite());
+        //Draw Tiles
         for (int i = 0; i < numTiles; i++)
         {
           tiles[i].draw(camera);
