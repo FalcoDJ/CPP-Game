@@ -27,7 +27,7 @@ int main()
 
     //Tile Space
     int levelWidthTiles = 20;
-    int levelHeightTiles = 11;
+    int levelHeightTiles = 12;
     int numTiles = levelWidthTiles * levelHeightTiles;
     Tile* tiles = nullptr;
     delete[] tiles;
@@ -42,7 +42,8 @@ int main()
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+                                                       {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 
     while (window.isOpen())
     {
@@ -114,8 +115,8 @@ int main()
         gameFrameCounter++;
 
         Vector2f camera;
-        camera.x = 0;
-        camera.y = 0;
+        camera.x = P1.getPosition().x - 60;
+        camera.y = P1.getPosition().y - 100;
 
         //Update Tiles
         for (int i = 0; i < levelHeightTiles; i++)
