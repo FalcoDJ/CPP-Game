@@ -32,11 +32,33 @@ int main()
     Tile* tiles = nullptr;
     delete[] tiles;
 
+    int levelMap[levelHeightTiles][levelWidthTiles] = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+
     while (window.isOpen())
     {
         Tile** tiles = new Tile*[levelHeightTiles];
         for(int i = 0; i < levelHeightTiles; i++)
+        {
           tiles[i] = new Tile[levelWidthTiles];
+        }
+        for (int i = 0; i < levelHeightTiles; i++)
+        {
+          for (int j = 0; j < levelWidthTiles; j++)
+          {
+            tiles[i][j].setType(levelMap[i][j]);
+          }
+        }
+
 
         Event event;
         while (window.pollEvent(event))

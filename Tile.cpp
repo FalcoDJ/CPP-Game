@@ -23,6 +23,11 @@ void Tile::draw(Vector2f camera)
   SpriteAnimator(m_Sprite, m_tileSize, m_tileSize, 4, 1, m_tileType);
 }
 
+int Tile::setType(int tileID)
+{
+  m_tileType = tileID;
+}
+
 int Tile::getType()
 {
   return m_tileType;
