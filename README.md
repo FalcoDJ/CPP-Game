@@ -9,7 +9,7 @@ C++ Game Project
 Linux Dependencies:
 
 ```bash
-sudo apt-get install libsfml-dev
+sudo apt-get install libsfml-dev cmake
 ```
 
 On Linux, open the terminal type:
