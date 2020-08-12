@@ -13,9 +13,9 @@ private:
   Sprite m_Sprite;
 
 public:
-  Tile(int type, Vector2f tilePosition);
 
-  void update();
+
+  void update(int type, Vector2f tilePosition);
   void draw(Vector2f camera);
 
   Sprite getSprite();

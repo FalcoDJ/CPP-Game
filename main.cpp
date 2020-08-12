@@ -26,15 +26,16 @@ int main()
     float totalGameTime;
 
     //Temporary tile Space
-    Vector2f tempPos;
-    tempPos.x = 1;
-    tempPos.y = 0;
-    Tile tile(0, tempPos);
 
+    int numTiles = 20;
+
+
+    Tile* tiles = nullptr;
+    delete[] tiles;
 
     while (window.isOpen())
     {
-
+        Tile* tiles = new Tile[numTiles];
         Event event;
         while (window.pollEvent(event))
         {
@@ -92,6 +93,16 @@ int main()
         camera.x = 0;
         camera.y = 0;
 
+
+        for (int i = 0; i < numTiles; i++)
+        {
+
+          Vector2f tempPos;
+          tempPos.x = i;
+          tempPos.y = 0;
+          tiles[i].update(2, tempPos);
+        }
+
         P1.update(dtAsSeconds);
 
         //###########
@@ -101,8 +112,13 @@ int main()
         window.clear();
 
         //Tiles
-        tile.draw(camera);
-        window.draw(tile.getSprite());
+        //tile.draw(camera);
+        //window.draw(tile.getSprite());
+        for (int i = 0; i < numTiles; i++)
+        {
+          tiles[i].draw(camera);
+          window.draw(tiles[i].getSprite());
+        }
 
         //Character
         P1.draw(gameFrameCounter, camera);
@@ -110,6 +126,6 @@ int main()
 
         window.display();
     }
-
+    delete[] tiles;
     return 0;
 }

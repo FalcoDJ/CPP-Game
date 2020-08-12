@@ -5,7 +5,7 @@
 
 using namespace sf;
 
-Tile::Tile(int type, Vector2f tilePosition)
+void Tile::update(int type, Vector2f tilePosition)
 {
   m_Sprite.setTexture(TextureHolder::GetTexture("img/Tiles.png"));
 
@@ -14,11 +14,6 @@ Tile::Tile(int type, Vector2f tilePosition)
   m_Position.y *= m_tileSize;
 
   m_tileType = type;
-}
-
-void Tile::update()
-{
-
 }
 
 void Tile::draw(Vector2f camera)
