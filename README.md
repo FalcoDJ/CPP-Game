@@ -8,7 +8,7 @@ On Linux, open the terminal type:
 
 ```bash
 git clone https://github.com/FalcoDJ/CPP-Game.git
-cd CPP-Game-master
+cd CPP-Game/
 sudo ./install.sh
 ```
 
