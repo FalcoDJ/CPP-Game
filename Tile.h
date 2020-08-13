@@ -18,7 +18,7 @@ public:
   void update(int type, Vector2f tilePosition);
   void draw(Vector2f camera);
 
-  int setType(int tileID);
+  void setType(int tileID);
   int getType();
 
   Sprite getSprite();
