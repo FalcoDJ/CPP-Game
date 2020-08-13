@@ -51,10 +51,14 @@ void Player::stopRight()
   m_rightKey = false;
 }
 
-//stand / stop crouching
+//On/Off ground
 void Player::Stand()
 {
-  m_downKey = false;
+  m_onGround = true;
+}
+void Player::Fall()
+{
+  m_onGround = false;
 }
 
 //Other Variables
@@ -89,7 +93,11 @@ void Player::update(float elapsedTime)
   //Jumping
   m_Position.y += m_YSpeed;
   m_YSpeed += m_playerYacceleration;
-  if (m_Position.y >= 144 - m_SpriteHeight)
+  //if (m_YSpeed > 17)
+  {
+    //m_YSpeed = 17;
+  }
+  if (m_onGround)
   {
     m_YSpeed  = 0;
     m_canJump = true;

@@ -26,6 +26,7 @@ class Player
     int m_playerYacceleration = 1;
 
     //Status Variables
+    bool m_onGround;
     bool m_canJump;
     bool m_leftKey;
     bool m_rightKey;

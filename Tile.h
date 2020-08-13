@@ -19,6 +19,9 @@ public:
 
   void setType(int tileID);
   int getType();
+  int getSize();
+
+  Vector2f getPosition();
 
   Sprite getSprite();
 

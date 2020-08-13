@@ -2,6 +2,7 @@
 #include "TextureHolder.h"
 #include "Player.h"
 #include "Tile.h"
+#include "Collisions.h"
 
 using namespace sf;
 
@@ -118,9 +119,6 @@ int main()
 
         Vector2f camera;
 
-        camera.x = P1.getPosition().x - 60;
-        camera.y = P1.getPosition().y - 100;
-
         //Update Tiles
         for (int i = 0; i < levelHeightTiles; i++)
         {
@@ -131,11 +129,43 @@ int main()
             tilePosition.y = i;
             tiles[i][j].update(tiles[i][j].getType(), tilePosition);
 
+            if (tiles[i][j].getType() != 0)
+            {
+              if (CollisionsGround(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition()))
+              {
+                if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+                {
+                  P1.Stand();
+                }
+              }
+            }
           }
         }
 
         //Update Player
         P1.update(dtAsSeconds);
+
+        //Update Camera - Must be last!
+
+        //X coord
+        if (P1.getPosition().x < 60)
+        {
+          camera.x = 0;
+        }
+        else
+        {
+          camera.x = P1.getPosition().x - 60;
+        }
+
+        //Y coord
+        if (P1.getPosition().y < 100)
+        {
+          camera.y = 0;
+        }
+        else
+        {
+          camera.y = P1.getPosition().y - 100;
+        }
 
         //###########
         // Drawing

@@ -33,6 +33,16 @@ int Tile::getType()
   return m_tileType;
 }
 
+Vector2f Tile::getPosition()
+{
+  return m_Position;
+}
+
+int Tile::getSize()
+{
+  return m_tileSize;
+}
+
 Sprite Tile::getSprite()
 {
   return m_Sprite;
