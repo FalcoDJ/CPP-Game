@@ -15,8 +15,6 @@ int main()
     //Player instance
     Player P1;
 
-    int tempGround = 144;
-
     int gameFrameCounter;
     //Window
 
@@ -31,7 +29,6 @@ int main()
     //Tile Space
     int levelWidthTiles = 20;
     int levelHeightTiles = 12;
-    int numTiles = levelWidthTiles * levelHeightTiles;
     Tile* tiles = nullptr;
     delete[] tiles;
 
@@ -116,6 +113,8 @@ int main()
 				float dtAsSeconds = dt.asSeconds();
 
         gameFrameCounter++;
+
+        totalGameTime += dtAsSeconds;
 
         Vector2f camera;
 
