@@ -9,6 +9,8 @@ class Player
     int m_PlayerHeight = 24;
     int m_PlayerWidth = 24;
     Vector2f m_Position;
+    int m_groundY;
+
 
     float m_Health;
 
@@ -22,11 +24,11 @@ class Player
     //Speed
     float m_Speed = 100;
     int m_YSpeed = 0;
-    int m_JumpSpeed = 700;
-    int m_playerYacceleration = 1;
+    int m_JumpSpeed = 800;
+    int m_playerYacceleration = 60;
 
     //Status Variables
-    bool m_onGround;
+    bool m_onGround = false;
     bool m_canJump;
     bool m_leftKey;
     bool m_rightKey;
@@ -53,6 +55,8 @@ class Player
     void Stand();
     int returnWidth();
     int returnHeight();
+
+    void setGround(int groundY);
 
     void update(float elapsedTime);
 

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "TextureHolder.h"
 #include "SpriteAnimator.h"
+#include "Collisions.h"
 
 Player::Player()
 {
@@ -54,11 +55,11 @@ void Player::stopRight()
 //On/Off ground
 void Player::Stand()
 {
-  m_onGround = true;
+
 }
 void Player::Fall()
 {
-  m_onGround = false;
+
 }
 
 //Other Variables
@@ -70,11 +71,6 @@ Sprite Player::getSprite()
 Vector2f Player::getPosition()
 {
   return m_Position;
-}
-
-bool Player::canIJump()
-{
-  return m_canJump;
 }
 
 int Player::returnWidth()
@@ -89,29 +85,9 @@ int Player::returnHeight()
 
 void Player::update(float elapsedTime)
 {
+
   //Moving
-  //Jumping
-  m_Position.y += m_YSpeed;
-  m_YSpeed += m_playerYacceleration;
-  if (m_YSpeed > 17)
-  {
-    m_YSpeed = 17;
-  }
-  if (m_onGround)
-  {
-    m_YSpeed  = 0;
-    m_canJump = true;
-  }
-  if (m_jumpKey)
-  {
-    m_YSpeed = -(m_JumpSpeed * elapsedTime);
-    m_canJump = false;
-    m_jumpKey = false;
-    m_onGround = false;
-  }
-
   //Left
-
   if (m_leftKey)
   {
     m_Position.x -= m_Speed * elapsedTime;

@@ -79,7 +79,7 @@ int main()
           }
 
           //Jump
-          if (Keyboard::isKeyPressed(sf::Keyboard::Space) && P1.canIJump())
+          if (Keyboard::isKeyPressed(sf::Keyboard::Space))
           {
             P1.Jump();
           }
@@ -131,10 +131,10 @@ int main()
 
             if (tiles[i][j].getType() != 0)
             {
-              if (CollisionsGround(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition())
-              && CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+              if (CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize())
+              &&  CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
               {
-                P1.Stand();
+                //Todo Player Collisions
               }
             }
           }
