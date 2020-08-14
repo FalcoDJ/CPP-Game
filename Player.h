@@ -57,6 +57,8 @@ class Player
     int returnWidth();
     int returnHeight();
 
+    void spawn();
+
     void update(float elapsedTime, int groundY);
 
     void draw(int gameFrameCounter, Vector2f camera);

@@ -84,6 +84,12 @@ int Player::returnHeight()
   return m_PlayerHeight;
 }
 
+void Player::spawn()
+{
+  m_Position.y = 0;
+  m_Position.x = 0;
+}
+
 void Player::update(float elapsedTime, int groundY)
 {
 

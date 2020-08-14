@@ -15,6 +15,7 @@ int main()
 
     //Player instance
     Player P1;
+    P1.spawn();
 
     int gameFrameCounter;
     //Window
