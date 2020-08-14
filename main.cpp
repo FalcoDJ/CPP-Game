@@ -39,12 +39,12 @@ int main()
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,2,3,4,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,2,3,4,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 
     while (window.isOpen())
     {
@@ -79,7 +79,7 @@ int main()
           }
 
           //Jump
-          if (Keyboard::isKeyPressed(sf::Keyboard::Space))
+          if (Keyboard::isKeyPressed(sf::Keyboard::Space) && P1.canIJump())
           {
             P1.Jump();
           }
@@ -120,6 +120,7 @@ int main()
         Vector2f camera;
 
         //Update Tiles
+        int groundY;
         for (int i = 0; i < levelHeightTiles; i++)
         {
           for (int j = 0; j < levelWidthTiles; j++)
@@ -131,17 +132,17 @@ int main()
 
             if (tiles[i][j].getType() != 0)
             {
-              if (CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize())
-              &&  CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+              if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize())
+              &&  CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
               {
-                //Todo Player Collisions
+                groundY = i * 16;
               }
             }
           }
         }
 
         //Update Player
-        P1.update(dtAsSeconds);
+        P1.update(dtAsSeconds, groundY);
 
         //Update Camera - Must be last!
 

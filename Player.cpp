@@ -57,9 +57,10 @@ void Player::Stand()
 {
 
 }
-void Player::Fall()
-{
 
+bool Player::canIJump()
+{
+  return m_canJump;
 }
 
 //Other Variables
@@ -83,10 +84,34 @@ int Player::returnHeight()
   return m_PlayerHeight;
 }
 
-void Player::update(float elapsedTime)
+void Player::update(float elapsedTime, int groundY)
 {
 
   //Moving
+
+  //Y Coord
+  m_Yvelocity += m_GravityAcceleration * elapsedTime;
+
+  if (m_Position.y >= (groundY - m_SpriteHeight))
+  {
+    m_Position.y = (groundY  - m_SpriteHeight);
+    m_Yvelocity = 0;
+    m_canJump = true;
+  }
+
+
+  if (m_jumpKey)
+  {
+    m_Yvelocity = -(m_JumpSpeed * elapsedTime);
+    m_onGround = false;
+    m_jumpKey = false;
+    m_canJump = false;
+  }
+
+  m_Position.y += m_Yvelocity;
+
+
+  //X Coord
   //Left
   if (m_leftKey)
   {
@@ -124,11 +149,6 @@ void Player::update(float elapsedTime)
   }
 
   m_Position.x += m_Xvelocity;
-
-  if (m_jumpKey)
-  {
-
-  }
 }
 
 void Player::draw(int gameFrameCounter, Vector2f camera)

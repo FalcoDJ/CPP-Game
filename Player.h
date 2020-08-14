@@ -25,8 +25,8 @@ class Player
     float m_Speed = 20;
     float m_Xvelocity;
     float m_Yvelocity;
+    int m_GravityAcceleration = 60;
     int m_JumpSpeed = 800;
-    int m_playerYacceleration = 60;
 
     //Status Variables
     bool m_onGround = false;
@@ -52,14 +52,12 @@ class Player
     //Stop moving functions
     void stopLeft();
     void stopRight();
-    void Fall();
     void Stand();
+    void Fall();
     int returnWidth();
     int returnHeight();
 
-    void setGround(int groundY);
-
-    void update(float elapsedTime);
+    void update(float elapsedTime, int groundY);
 
     void draw(int gameFrameCounter, Vector2f camera);
 
