@@ -22,8 +22,9 @@ class Player
     int m_activeFrame = 0;
 
     //Speed
-    float m_Speed = 100;
-    int m_YSpeed = 0;
+    float m_Speed = 20;
+    float m_Xvelocity;
+    float m_Yvelocity;
     int m_JumpSpeed = 800;
     int m_playerYacceleration = 60;
 

@@ -90,18 +90,43 @@ void Player::update(float elapsedTime)
   //Left
   if (m_leftKey)
   {
-    m_Position.x -= m_Speed * elapsedTime;
+    m_Xvelocity -= m_Speed * elapsedTime;
   }
-
   //Right
   if (m_rightKey)
   {
-    m_Position.x += m_Speed * elapsedTime;
+    m_Xvelocity += m_Speed * elapsedTime;
   }
+  if (m_Xvelocity > 120)
+  {
+    m_Xvelocity = 120;
+  }
+  if (m_Xvelocity < -120)
+  {
+    m_Xvelocity = -120;
+  }
+
+  if (!m_rightKey && !m_leftKey && m_Xvelocity != 0)
+  {
+    if (m_Xvelocity > 0 && m_Xvelocity >= 50)
+    {
+      m_Xvelocity -= 50;
+    }
+    else if (m_Xvelocity < 0 && m_Xvelocity <= -50)
+    {
+      m_Xvelocity += 50;
+    }
+    else
+    {
+      m_Xvelocity = 0;
+    }
+  }
+
+  m_Position.x += m_Xvelocity;
 
   if (m_jumpKey)
   {
-    m_Position.y += m_JumpSpeed * elapsedTime;
+
   }
 }
 
