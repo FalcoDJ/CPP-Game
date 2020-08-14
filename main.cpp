@@ -131,12 +131,10 @@ int main()
 
             if (tiles[i][j].getType() != 0)
             {
-              if (CollisionsGround(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition()))
+              if (CollisionsGround(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition())
+              && CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
               {
-                if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
-                {
-                  P1.Stand();
-                }
+                P1.Stand();
               }
             }
           }

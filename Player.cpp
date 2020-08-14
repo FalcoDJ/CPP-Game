@@ -107,6 +107,7 @@ void Player::update(float elapsedTime)
     m_YSpeed = -(m_JumpSpeed * elapsedTime);
     m_canJump = false;
     m_jumpKey = false;
+    m_onGround = false;
   }
 
   //Left
