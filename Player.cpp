@@ -93,9 +93,9 @@ void Player::update(float elapsedTime)
   //Jumping
   m_Position.y += m_YSpeed;
   m_YSpeed += m_playerYacceleration;
-  //if (m_YSpeed > 17)
+  if (m_YSpeed > 17)
   {
-    //m_YSpeed = 17;
+    m_YSpeed = 17;
   }
   if (m_onGround)
   {
