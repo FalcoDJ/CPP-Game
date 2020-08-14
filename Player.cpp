@@ -106,15 +106,16 @@ void Player::update(float elapsedTime)
     m_Xvelocity = -120;
   }
 
+  //Friction for running slows player down
   if (!m_rightKey && !m_leftKey && m_Xvelocity != 0)
   {
-    if (m_Xvelocity > 0 && m_Xvelocity >= 50)
+    if (m_Xvelocity > 0 && m_Xvelocity >= 60)
     {
-      m_Xvelocity -= 50;
+      m_Xvelocity -= 60;
     }
-    else if (m_Xvelocity < 0 && m_Xvelocity <= -50)
+    else if (m_Xvelocity < 0 && m_Xvelocity <= -60)
     {
-      m_Xvelocity += 50;
+      m_Xvelocity += 60;
     }
     else
     {
