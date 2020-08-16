@@ -45,10 +45,10 @@ int main()
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,0,0,2,3,4,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,2,3,4,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {2,3,3,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {0,0,0,0,0,0,2,3,4,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0},
+                                                       {2,3,3,3,3,3,3,3,4,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 
@@ -93,7 +93,7 @@ int main()
               P1.Jump();
             }
 
-            if (Keyboard::isKeyPressed(sf::Keyboard::Left))
+            if (Keyboard::isKeyPressed(sf::Keyboard::Left) || Keyboard::isKeyPressed(sf::Keyboard::A))
             {
               //Move Left
               P1.moveLeft();
@@ -103,7 +103,7 @@ int main()
               //Stop Left
               P1.stopLeft();
             }
-            if (Keyboard::isKeyPressed(sf::Keyboard::Right))
+            if (Keyboard::isKeyPressed(sf::Keyboard::Right) || Keyboard::isKeyPressed(sf::Keyboard::D))
             {
               //Move Right
               P1.moveRight();
@@ -112,6 +112,20 @@ int main()
             {
               //Stop Right
               P1.stopRight();
+            }
+
+            //Pause
+            if (Keyboard::isKeyPressed(sf::Keyboard::P))
+            {
+              State = GameState::Paused;
+            }
+          }
+
+          if (State == GameState::Paused)
+          {
+            if (Keyboard::isKeyPressed(sf::Keyboard::P))
+            {
+              State = GameState::Playing;
             }
           }
 
@@ -147,6 +161,7 @@ int main()
 
           //Update Tiles
           int groundY;
+          int roofY;
           for (int i = 0; i < levelHeightTiles; i++)
           {
             for (int j = 0; j < levelWidthTiles; j++)
@@ -158,11 +173,22 @@ int main()
 
               if (tiles[i][j].getType() != 0)
               {
-                if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize())
-                &&  CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+                if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
                 {
-                  groundY = tiles[i][j].getPosition().y;
-                  P1.Stand();
+                  //Ground Collision for Player
+                  if (CollisionBottom(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), (tiles[i][j].getSize() / 8)))
+                  {
+                    groundY = tiles[i][j].getPosition().y;
+                    P1.Stand();
+                  }
+                }
+
+                if (CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+                {
+                  if (CollisionLeft(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+                  {
+                    //TODO - Add walls!
+                  }
                 }
               }
             }

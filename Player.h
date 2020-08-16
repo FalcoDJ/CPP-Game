@@ -26,15 +26,16 @@ class Player
     int m_MaxXvelocity = 100;
     float m_Yvelocity;
     int m_GravityAcceleration = 60;
-    int m_JumpSpeed = 800;
+    int m_JumpSpeed = 700;
 
     //Status Variables
     bool m_onGround = false;
     bool m_canJump = false;
-    bool m_leftKey;
-    bool m_rightKey;
-    bool m_jumpKey;
-    bool m_downKey;
+    bool m_hitAroof = false;
+    bool m_leftKey = false;
+    bool m_rightKey = false;
+    bool m_jumpKey = false;
+    bool m_downKey = false;
 
 
   public:

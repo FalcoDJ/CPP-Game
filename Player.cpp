@@ -109,11 +109,11 @@ void Player::update(float elapsedTime, int groundY)
 
   //Y Coord
   m_Yvelocity += m_GravityAcceleration * elapsedTime;
-  m_Position.y += m_Yvelocity;
+
   if (m_Position.y >= (groundY - m_SpriteHeight) && m_onGround)
   {
-    m_Position.y = (groundY  - m_SpriteHeight);
     m_Yvelocity = 0;
+    m_Position.y = (groundY  - m_SpriteHeight);
     m_canJump = true;
   }
 
@@ -125,8 +125,7 @@ void Player::update(float elapsedTime, int groundY)
     m_canJump = false;
   }
 
-
-
+  m_Position.y += m_Yvelocity;
 
   //X Coord
   //Left
