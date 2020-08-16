@@ -6,12 +6,17 @@
 
 using namespace sf;
 
+enum class GameState {Playing, Paused, GameOver};
+
 int main()
 {
     //Texture holder instance is required for using texture holders
     TextureHolder holder;
 
     Clock clock;
+
+    GameState State;
+    State = GameState::GameOver;
 
     //Player instance
     Player P1;
@@ -79,40 +84,54 @@ int main()
             window.close();
           }
 
-          //Jump
-          if (Keyboard::isKeyPressed(sf::Keyboard::Space) && P1.canIJump())
+          //If Game State is Playing
+          if (State == GameState::Playing)
           {
-            P1.Jump();
+            //Jump
+            if (Keyboard::isKeyPressed(sf::Keyboard::Space) && P1.canIJump())
+            {
+              P1.Jump();
+            }
+
+            if (Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+              //Move Left
+              P1.moveLeft();
+            }
+            else
+            {
+              //Stop Left
+              P1.stopLeft();
+            }
+            if (Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+              //Move Right
+              P1.moveRight();
+            }
+            else
+            {
+              //Stop Right
+              P1.stopRight();
+            }
           }
 
-          if (Keyboard::isKeyPressed(sf::Keyboard::Left))
+          if (State == GameState::GameOver)
           {
-            //Move Left
-            P1.moveLeft();
-          }
-          else
-          {
-            //Stop Left
-            P1.stopLeft();
-          }
-          if (Keyboard::isKeyPressed(sf::Keyboard::Right))
-          {
-            //Move Right
-            P1.moveRight();
-          }
-          else
-          {
-            //Stop Right
-            P1.stopRight();
+            if (Keyboard::isKeyPressed(sf::Keyboard::Return))
+            {
+              P1.resetPlayer();
+              P1.spawn();
+              State = GameState::Playing;
+            }
           }
 
         //###########
         // Updating
         //###########
         //Update the time delta
-				Time dt = clock.restart();
-				//Make a decimal fraction of 1 from the delta time
-				float dtAsSeconds = dt.asSeconds();
+        Time dt = clock.restart();
+        //Make a decimal fraction of 1 from the delta time
+        float dtAsSeconds = dt.asSeconds();
 
         gameFrameCounter++;
 
@@ -120,51 +139,55 @@ int main()
 
         Vector2f camera;
 
-        //Update Tiles
-        int groundY;
-        for (int i = 0; i < levelHeightTiles; i++)
+        if (State == GameState::Playing)
         {
-          for (int j = 0; j < levelWidthTiles; j++)
-          {
-            Vector2f tilePosition;
-            tilePosition.x = j;
-            tilePosition.y = i;
-            tiles[i][j].update(tiles[i][j].getType(), tilePosition);
 
-            if (tiles[i][j].getType() != 0)
+          //Update Tiles
+          int groundY;
+          for (int i = 0; i < levelHeightTiles; i++)
+          {
+            for (int j = 0; j < levelWidthTiles; j++)
             {
-              if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize())
-              &&  CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+              Vector2f tilePosition;
+              tilePosition.x = j;
+              tilePosition.y = i;
+              tiles[i][j].update(tiles[i][j].getType(), tilePosition);
+
+              if (tiles[i][j].getType() != 0)
               {
-                groundY = i * 16;
+                if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize())
+                &&  CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
+                {
+                  groundY = i * 16;
+                }
               }
             }
           }
-        }
 
-        //Update Player
-        P1.update(dtAsSeconds, groundY);
+          //Update Player
+          P1.update(dtAsSeconds, groundY);
 
-        //Update Camera - Must be last!
+          //Update Camera - Must be last!
 
-        //X coord
-        if (P1.getPosition().x < 60)
-        {
-          camera.x = 0;
-        }
-        else
-        {
-          camera.x = P1.getPosition().x - 60;
-        }
+          //X coord
+          if (P1.getPosition().x < 60)
+          {
+            camera.x = 0;
+          }
+          else
+          {
+            camera.x = P1.getPosition().x - 60;
+          }
 
-        //Y coord
-        if (P1.getPosition().y < 100)
-        {
-          camera.y = 0;
-        }
-        else
-        {
-          camera.y = P1.getPosition().y - 100;
+          //Y coord
+          if (P1.getPosition().y < 100)
+          {
+            camera.y = 0;
+          }
+          else
+          {
+            camera.y = P1.getPosition().y - 100;
+          }
         }
 
         //###########
@@ -173,19 +196,22 @@ int main()
 
         window.clear();
 
-        //Draw Tiles
-        for (int i = 0; i < levelHeightTiles; i++)
+        if (State == GameState::Playing)
         {
-          for (int j = 0; j < levelWidthTiles; j++)
+          //Draw Tiles
+          for (int i = 0; i < levelHeightTiles; i++)
           {
-            tiles[i][j].draw(camera);
-            window.draw(tiles[i][j].getSprite());
+            for (int j = 0; j < levelWidthTiles; j++)
+            {
+              tiles[i][j].draw(camera);
+              window.draw(tiles[i][j].getSprite());
+            }
           }
-        }
 
-        //Character
-        P1.draw(gameFrameCounter, camera);
-        window.draw(P1.getSprite());
+          //Character
+          P1.draw(gameFrameCounter, camera);
+          window.draw(P1.getSprite());
+        }
 
         window.display();
     }

@@ -90,21 +90,28 @@ void Player::spawn()
   m_Position.x = 0;
 }
 
+void Player::resetPlayer()
+{
+  m_Health = m_MaxHealth;
+  m_Xvelocity = 0;
+  m_Yvelocity = 0;
+  m_activeFrame = 0;
+  m_onGround = false;
+}
+
 void Player::update(float elapsedTime, int groundY)
 {
-
   //Moving
 
   //Y Coord
   m_Yvelocity += m_GravityAcceleration * elapsedTime;
-
+  m_Position.y += m_Yvelocity;
   if (m_Position.y >= (groundY - m_SpriteHeight))
   {
     m_Position.y = (groundY  - m_SpriteHeight);
     m_Yvelocity = 0;
     m_canJump = true;
   }
-
 
   if (m_jumpKey)
   {
@@ -114,7 +121,7 @@ void Player::update(float elapsedTime, int groundY)
     m_canJump = false;
   }
 
-  m_Position.y += m_Yvelocity;
+
 
 
   //X Coord
@@ -128,13 +135,13 @@ void Player::update(float elapsedTime, int groundY)
   {
     m_Xvelocity += m_Speed * elapsedTime;
   }
-  if (m_Xvelocity > 120)
+  if (m_Xvelocity > m_MaxXvelocity)
   {
-    m_Xvelocity = 120;
+    m_Xvelocity = m_MaxXvelocity;
   }
-  if (m_Xvelocity < -120)
+  if (m_Xvelocity < -m_MaxXvelocity)
   {
-    m_Xvelocity = -120;
+    m_Xvelocity = -m_MaxXvelocity;
   }
 
   //Friction for running slows player down

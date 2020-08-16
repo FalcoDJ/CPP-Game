@@ -9,10 +9,9 @@ class Player
     int m_PlayerHeight = 24;
     int m_PlayerWidth = 24;
     Vector2f m_Position;
-    int m_groundY;
-
 
     float m_Health;
+    int m_MaxHealth = 100;
 
     //Sprite Variables
     Sprite m_Sprite;
@@ -24,6 +23,7 @@ class Player
     //Speed
     float m_Speed = 20;
     float m_Xvelocity;
+    int m_MaxXvelocity = 100;
     float m_Yvelocity;
     int m_GravityAcceleration = 60;
     int m_JumpSpeed = 800;
