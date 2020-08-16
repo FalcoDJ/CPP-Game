@@ -142,6 +142,9 @@ int main()
         if (State == GameState::Playing)
         {
 
+          //Necessary for proper gravity
+          P1.Fall();
+
           //Update Tiles
           int groundY;
           for (int i = 0; i < levelHeightTiles; i++)
@@ -158,7 +161,8 @@ int main()
                 if (CollisionX(P1.getPosition(), P1.returnWidth(), tiles[i][j].getPosition(), tiles[i][j].getSize())
                 &&  CollisionY(P1.getPosition(), P1.returnHeight(), tiles[i][j].getPosition(), tiles[i][j].getSize()))
                 {
-                  groundY = i * 16;
+                  groundY = tiles[i][j].getPosition().y;
+                  P1.Stand();
                 }
               }
             }

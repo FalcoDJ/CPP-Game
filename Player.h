@@ -30,7 +30,7 @@ class Player
 
     //Status Variables
     bool m_onGround = false;
-    bool m_canJump;
+    bool m_canJump = false;
     bool m_leftKey;
     bool m_rightKey;
     bool m_jumpKey;

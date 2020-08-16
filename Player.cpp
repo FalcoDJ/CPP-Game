@@ -55,7 +55,11 @@ void Player::stopRight()
 //On/Off ground
 void Player::Stand()
 {
-
+  m_onGround = true;
+}
+void Player::Fall()
+{
+  m_onGround = false;
 }
 
 bool Player::canIJump()
@@ -106,7 +110,7 @@ void Player::update(float elapsedTime, int groundY)
   //Y Coord
   m_Yvelocity += m_GravityAcceleration * elapsedTime;
   m_Position.y += m_Yvelocity;
-  if (m_Position.y >= (groundY - m_SpriteHeight))
+  if (m_Position.y >= (groundY - m_SpriteHeight) && m_onGround)
   {
     m_Position.y = (groundY  - m_SpriteHeight);
     m_Yvelocity = 0;
