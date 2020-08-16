@@ -125,6 +125,12 @@ void Player::update(float elapsedTime, int groundY)
     m_canJump = false;
   }
 
+  //Max velocity Y
+  if (m_Yvelocity > m_MaxYvelocity)
+  {m_Yvelocity = m_MaxYvelocity;}
+  else if (m_Yvelocity < -(m_MaxYvelocity))
+  {m_Yvelocity = -(m_MaxYvelocity);}
+
   m_Position.y += m_Yvelocity;
 
   //X Coord
@@ -138,25 +144,23 @@ void Player::update(float elapsedTime, int groundY)
   {
     m_Xvelocity += m_Speed * elapsedTime;
   }
+
+  //Max velocity X
   if (m_Xvelocity > m_MaxXvelocity)
-  {
-    m_Xvelocity = m_MaxXvelocity;
-  }
-  if (m_Xvelocity < -m_MaxXvelocity)
-  {
-    m_Xvelocity = -m_MaxXvelocity;
-  }
+  {m_Xvelocity = m_MaxXvelocity;}
+  else if (m_Xvelocity < -m_MaxXvelocity)
+  {m_Xvelocity = -m_MaxXvelocity;}
 
   //Friction for running slows player down
   if (!m_rightKey && !m_leftKey && m_Xvelocity != 0)
   {
-    if (m_Xvelocity > 0 && m_Xvelocity >= 60)
+    if (m_Xvelocity > 0 && m_Xvelocity >= 25)
     {
-      m_Xvelocity -= 60;
+      m_Xvelocity -= 25;
     }
-    else if (m_Xvelocity < 0 && m_Xvelocity <= -60)
+    else if (m_Xvelocity < 0 && m_Xvelocity <= -25)
     {
-      m_Xvelocity += 60;
+      m_Xvelocity += 25;
     }
     else
     {

@@ -35,7 +35,7 @@ int main()
 
     //Tile Space
     int levelWidthTiles = 20;
-    int levelHeightTiles = 12;
+    int levelHeightTiles = 11;
     Tile* tiles = nullptr;
     delete[] tiles;
 
@@ -45,12 +45,11 @@ int main()
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,2,3,4,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {2,3,3,3,3,3,3,3,4,0,0,0,0,0,0,0,0,0,0,0},
                                                        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                                                       {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+                                                       {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,4},
+                                                       {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+                                                       {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+                                                       {2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4}};
 
     while (window.isOpen())
     {
@@ -161,7 +160,6 @@ int main()
 
           //Update Tiles
           int groundY;
-          int roofY;
           for (int i = 0; i < levelHeightTiles; i++)
           {
             for (int j = 0; j < levelWidthTiles; j++)
@@ -200,9 +198,13 @@ int main()
           //Update Camera - Must be last!
 
           //X coord
-          if (P1.getPosition().x < 60)
+          if (P1.getPosition().x <= 60)
           {
             camera.x = 0;
+          }
+          else if (P1.getPosition().x > ((levelWidthTiles * 16) - 260))
+          {
+            camera.x = ((levelWidthTiles * 16) - windowWidth);
           }
           else
           {
@@ -210,14 +212,19 @@ int main()
           }
 
           //Y coord
-          if (P1.getPosition().y < 100)
+          if (P1.getPosition().y <= 100)
           {
             camera.y = 0;
+          }
+          else if (P1.getPosition().y > ((levelHeightTiles * 16) -76))
+          {
+            camera.y = ((levelHeightTiles * 16) - windowHeight);
           }
           else
           {
             camera.y = P1.getPosition().y - 100;
           }
+
         }
 
         //###########

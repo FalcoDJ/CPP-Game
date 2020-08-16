@@ -23,8 +23,9 @@ class Player
     //Speed
     float m_Speed = 20;
     float m_Xvelocity;
-    int m_MaxXvelocity = 100;
+    int m_MaxXvelocity = 75;
     float m_Yvelocity;
+    int m_MaxYvelocity = 120;
     int m_GravityAcceleration = 60;
     int m_JumpSpeed = 700;
 
