@@ -23,6 +23,3 @@ sudo ./install.sh
 ## Usage
 
 After you've compiled launch "GameLauncher"
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
